@@ -1,0 +1,76 @@
+.login-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    background-color: #5c5959;
+  }
+  
+  .login-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: rgb(242, 242, 242);
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  }
+  
+  .login-form input {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    border:blue;
+    outline: none;
+  }
+  
+  .login-form button {
+    background-color: #7436bc;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 20px;
+  }
+  
+  .login-form button:hover {
+    background-color: #7436bc;
+  }
+  
+  .login-form .login-with-google {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 20px;
+  }
+  
+  .login-form .login-with-google button {
+    background-color: #db4a39;
+    margin-left: 10px;
+  }
+  
+  .login-form .login-with-google button:hover {
+    background-color: #c6392d;
+  }
+  
+  .login-form .login-with-google img {
+    height: 30px;
+    margin-right: 10px;
+  }
+  
+  .email-label{
+    color:rgb(0, 0, 0);
+    font-size:large ;
+    font-weight: bold;
+  }
+  
+  .pass-label{
+    color:rgb(0, 0, 0);
+    font-size:large ;
+    font-weight: bold;
+  }
+
