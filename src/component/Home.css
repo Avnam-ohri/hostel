@@ -39,9 +39,11 @@
     position: absolute;
     top: 30%;
     left: 50%;
+    width: 40%;
     transform: translateX(-50%);
     z-index: 2;
     transition: top 0.3s ease-in-out;
+    /* border :2px solid red; */
   }
   
   .search-container:focus-within {

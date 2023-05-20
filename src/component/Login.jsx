@@ -1,45 +1,70 @@
 import React, { useState } from 'react';
-import { FcGoogle } from 'react-icons/fc';
+import { signInWithEmailAndPassword } from 'firebase/auth';
+import { auth } from '../../server/firebase';
 import './Login.css';
 
-const Login = () => {
+const Login = ({ openDialog }) => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [error, setError] = useState(null);
 
-  const handleEmailChange = (event) => {
-    setEmail(event.target.value);
+  const onLogin = (e) => {
+    e.preventDefault();
+
+    signInWithEmailAndPassword(auth, email, password)
+      .then(() => {
+        console.log('Logged in successfully');
+      })
+      .catch((error) => {
+        const errorCode = error.code;
+        const errorMessage = error.message;
+        console.log(errorCode, errorMessage);
+        setError(errorMessage);
+      });
   };
 
-  const handlePasswordChange = (event) => {
-    setPassword(event.target.value);
-  };
-
-  const handleSubmit = (event) => {
-    event.preventDefault();
-    // Handle form submission
-  };
-
-  const handleLoginWithGoogle = () => {
-    // Handle login with Google
+  const openLoginDialog = () => {
+    openDialog();
   };
 
   return (
     <div className="login-container">
-      <form className="login-form" onSubmit={handleSubmit}>
-        <h2>Login</h2>
-        <div className="form-group">
-          <label className='email-label' htmlFor="email">Email</label>
-          <input className='email-input' type="email" id="email" value={email} onChange={handleEmailChange} required />
+      <h2>Login</h2>
+      <form>
+        <div>
+          <label htmlFor="email-address">Email address</label>
+          <input
+            type="email"
+            id="email-address"
+            name="email"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+            required
+            placeholder="Email address"
+          />
         </div>
-        <div className="form-group">
-          <label className='pass-label' htmlFor="password">Password</label>
-          <input className='pass-input'type="password" id="password" value={password} onChange={handlePasswordChange} required />
+        <div>
+          <label htmlFor="password">Password</label>
+          <input
+            type="password"
+            id="password"
+            name="password"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+            required
+            placeholder="Password"
+          />
         </div>
-        <button type="submit">Login</button>
-        <button type="button" onClick={handleLoginWithGoogle}>Login with Google
-        <br />
-        <FcGoogle className='google-icon' />
-        </button>
+        {error && <p className="error-message">{error}</p>}
+        <div>
+          <button onClick={onLogin}>Login</button>
+        </div>
+        <p>
+          No account yet?{' '}
+          <button className="login-link" onClick={openLoginDialog}>
+            Sign up
+          </button>
+        </p>
       </form>
     </div>
   );

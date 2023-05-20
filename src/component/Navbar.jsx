@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { FaUserCircle } from 'react-icons/fa';
+import { FcMenu } from "react-icons/fc";
 import './Navbar.css';
 
 const Navbar = () => {
@@ -17,9 +18,9 @@ const Navbar = () => {
           My Hostels
         </Link>
       </div>
-      <button className="navbar-toggle" onClick={toggleMenu}>
-        <span className="navbar-toggle-icon"></span>
-      </button>
+      <FcMenu className="navbar-toggle" onClick={toggleMenu}>
+        <span className={`navbar-toggle-icon ${isOpen ? 'open' : ''}`}></span>
+      </FcMenu>
       <ul className={`navbar-nav ${isOpen ? 'open' : ''}`}>
         <li className="nav-item">
           <Link to="/" className="nav-link">
@@ -38,21 +39,21 @@ const Navbar = () => {
         </li>
         <li className="nav-item">
           <Link to="/contact" className="nav-link">
-            Contact
+            Contact Us
           </Link>
         </li>
-        <li className="nav-item user-icon">
-          <FaUserCircle className="user-icon" />
-          <div className="user-dropdown">
-            <Link to="/login" className="dropdown-link">
-              Login
-            </Link>
-            <Link to="/signup" className="dropdown-link">
-              Signup
-            </Link>
-          </div>
-        </li>
       </ul>
+      <div className="user-icon">
+        <FaUserCircle className="user-icon" />
+        <div className="user-dropdown">
+          <Link to="/login" className="dropdown-link">
+            Login
+          </Link>
+          <Link to="/signup" className="dropdown-link">
+            Signup
+          </Link>
+        </div>
+      </div>
     </nav>
   );
 };

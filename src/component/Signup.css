@@ -1,74 +1,79 @@
+
 .signup-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    height: 100vh;
-    background-color: #0f0d0d;
-  }
-  
-  .signup-form {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    background-color: rgb(169, 165, 165);
-    padding: 30px;
-    width: 20%;
-    border-radius: 10px;
-    box-shadow: 0 0 10px rgba(151, 42, 42, 0.2);
-  }
-  
-  .signup-form h2 {
-    margin-bottom: 20px;
-  }
-  
-  .signup-form input {
-    width: 100%;
-    padding: 10px;
-    margin-bottom: 10px;
-    border-radius: 5px;
-    border: none;
-    outline: none;
-  }
-  
-  .signup-form button {
-    background-color: #257af1;
-    color: rgb(11, 10, 10);
-    padding: 10px 20px;
-    font-weight: bold;
-    font-size: 18px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    margin-top: 20px;
-  }
-  
-  .signup-form button:hover {
-    background-color: #3e8e41;
-  }
-  
-  .signup-form .signup-with-google {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin-top: 30px;
-  }
-  
-  .signup-form .signup-with-google button {
-    background-color: #f0f1f3;
-    font-size: 15px;
-    
-  }
-  .google-icon{
-    margin-top: 2px;
-    margin-left: 0px;
-    padding-right: 5px;
-    font-size: 25px;
-  }
-  .signup-form .signup-with-google button:hover {
-    background-color: #acd5ad;
-  }
-  
- 
-  
+  display: flex;
+  margin-top: 70px;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+  /* border: 2px solid red; */
+}
+
+.signup-title {
+  color: #000;
+  font-size: 2rem;
+  margin-bottom: 20px;
+}
+
+.signup-form {
+  display: flex;
+  flex-direction: column;
+  width: 300px;
+}
+
+.signup-input {
+  padding: 10px;
+  margin-bottom: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 1.2rem;
+}
+
+.signup-button {
+  background-color: red;
+  color: #fff;
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  font-size: 1.2rem;
+  cursor: pointer;
+}
+
+.signup-button:hover {
+  background-color: #ff0000;
+}
+
+.signup-error {
+  color: red;
+  margin-top: 10px;
+}
+
+.signup-login-link {
+  color: #000;
+  margin-top: 20px;
+}
+
+.signup-login-link a {
+  color: #ff0000;
+  text-decoration: none;
+}
+
+.google-signup-container {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.google-signup-button {
+  background: #047723;
+  color: black;
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  font-size: 1.2rem;
+  cursor: pointer;
+}
+
+.google-signup-button:hover {
+  opacity: 0.8;
+}
+

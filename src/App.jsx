@@ -15,7 +15,7 @@ function App() {
       <Routes>
         <Route exact path="/" element={<Home />} />
         <Route path="/find-a-hostel" element={<FindHostel />} />
-        <Route path="/list-your-property" element={<ListProperty />} />
+        {/* <Route path="/list-your-property" element={<ListProperty />} /> */}
         <Route path="/contact" element={<Contact />} />
         <Route path ="/login" element={<Login />} />
         <Route path ="/signup" element={<Signup />} />

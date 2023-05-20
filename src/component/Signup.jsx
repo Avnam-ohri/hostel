@@ -1,68 +1,89 @@
 import React, { useState } from 'react';
+import { auth, signInWithGoogle } from '../../server/firebase';
+import { Link } from 'react-router-dom';
+ // assuming you have initialized Firebase auth
 import './Signup.css';
-import { FcGoogle } from 'react-icons/fc';
-
 
 const Signup = () => {
   const [name, setName] = useState('');
+  const [contactNumber, setContactNumber] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [error, setError] = useState(null);
 
-  const handleNameChange = (event) => {
-    setName(event.target.value);
+  const handleSignup = async (e) => {
+    e.preventDefault();
+
+    try {
+      const userCredential = await auth.createUserWithEmailAndPassword(email, password);
+      const user = userCredential.user;
+      // You can perform additional operations after signup, like updating user profile, etc.
+    } catch (error) {
+      setError(error.message);
+    }
   };
 
-  const handleEmailChange = (event) => {
-    setEmail(event.target.value);
-  };
+  const handleGoogleSignup = () => {
+    signInWithGoogle()
+    .then((result) => {
+      // Handle successful Google signup
+      const user = result.user;
+      navigate('/dashboard'); // Redirect to the dashboard or any other page after successful signup
+    })
+    .catch((error) => {
+      setError(error.message);
+    });
 
-  const handlePasswordChange = (event) => {
-    setPassword(event.target.value);
-  };
-
-  const handleSubmit = (event) => {
-    event.preventDefault();
-    // Handle form submission logic here
-  };
-
-  const handleSignupWithGoogle = () => {
-    // Handle signup with Google logic here
+    // Implement the Google signup functionality
   };
 
   return (
     <div className="signup-container">
-      <form className="signup-form" onSubmit={handleSubmit}>
-        <h2>Create an Account</h2>
+      <h2 className="signup-title">Signup</h2>
+      <form className="signup-form" onSubmit={handleSignup}>
         <input
+          className="signup-input"
           type="text"
           placeholder="Name"
           value={name}
-          onChange={handleNameChange}
+          onChange={(e) => setName(e.target.value)}
           required
         />
         <input
+          className="signup-input"
+          type="text"
+          placeholder="Contact Number"
+          value={contactNumber}
+          onChange={(e) => setContactNumber(e.target.value)}
+          required
+        />
+        <input
+          className="signup-input"
           type="email"
           placeholder="Email"
           value={email}
-          onChange={handleEmailChange}
+          onChange={(e) => setEmail(e.target.value)}
           required
         />
         <input
+          className="signup-input"
           type="password"
           placeholder="Password"
           value={password}
-          onChange={handlePasswordChange}
+          onChange={(e) => setPassword(e.target.value)}
           required
         />
-        <button type="submit">Sign Up</button>
-        <div className="signup-with-google">
-          <button onClick={handleSignupWithGoogle}>
-          <FcGoogle className='google-icon' />
-          <br />
-             Signup with Google
-          </button>
-        </div>
+        <button className="signup-button" type="submit">Signup</button>
       </form>
+      <div className="google-signup-container">
+        <button className="google-signup-button" onClick={handleGoogleSignup}>
+          Signup using Google
+        </button>
+      </div>
+      {error && <p className="signup-error">{error}</p>}
+      <p className="signup-login-link">
+        Already a user? <Link to="/login">Login</Link>
+      </p>
     </div>
   );
 };
